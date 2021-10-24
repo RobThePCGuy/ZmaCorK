@@ -7,6 +7,11 @@ Z390-A PRO / macOS / OpenCore / i5-9600K = ZmaCorK
 
 - **MSI Z390-A PRO**
 - **Intel i5-9600K**
+ 
+## Downloading The Recovery Image for macOS Big Sur
+- Resize your EFI partition to 1 GB
+- Follow along in this [guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html#making-the-installer) until the part about putting the recovery files on a thumb drive. 
+- Instead you will put them alongside the EFI folder once you do mountvol in the next few steps.
 
 ## Installing The EFI Files
 
@@ -17,8 +22,11 @@ Z390-A PRO / macOS / OpenCore / i5-9600K = ZmaCorK
 3: Open an Admin Command Prompt and run:
 
 ```
-cmd /c if not exist X: (mountvol X: /S) & xcopy C:\EFI X:\EFI /E /H /C /I && move X:\EFI\Microsoft\Boot\bootmgfw.efi X:\EFI\Microsoft\Boot\bootmgfw.efi.bak && copy X:\EFI\BOOT\BOOTx64.efi X:\EFI\Microsoft\Boot\bootmgfw.efi
+cmd /c if not exist X: (mountvol X: /S) & xcopy C:\EFI X:\EFI /E /H /C /I
+
+move X:\EFI\Microsoft\Boot\bootmgfw.efi X:\EFI\Microsoft\Boot\bootmgfw.efi.bak && copy X:\EFI\BOOT\BOOTx64.efi X:\EFI\Microsoft\Boot\bootmgfw.efi
 ```
+**Do not do the 2nd above command if you need Secure Boot in order to boot Windows, i.e. Windows 11.*
 
 ## Setting Up The BIOS
 
@@ -40,4 +48,5 @@ cmd /c if not exist X: (mountvol X: /S) & xcopy C:\EFI X:\EFI /E /H /C /I && mov
 - After saving the BIOS changes make sure to have your Display Port (DP) cable connected.
 - I use a DP->HDMI cable that plugs into a ARC port on the TV so it pulls in the audio as well.
 - Once you start the PC it should take you to the OpenCore Bootloader.
-- Select macOS to boot it.
+- Select the recovery dmg to start macOS install.
+- Refer [here](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html#booting-the-opencore-usb) for any troubleshooting.
