@@ -28,7 +28,7 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 ### Generate Unique Serials
 - Download the config.plist editor from **[here](https://github.com/corpnewt/ProperTree)**
 - Extract the zip and run the .bat file.
-- In ProperTree, Open->C:\EFI\OC\config.plist
+- In ProperTree, **Open->C:\EFI\OC\config.plist**
 - Follow the **PlatformInfo** steps **[here](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html#platforminfo)** to generate your own unique Board Serial, MLB & UUID.
  
 *Note: Using this repo without generating your own serials will not work as I have blanked them out in the config.plist*
