@@ -4,51 +4,56 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 # My macOS 11.x OpenCore Hackintosh
  
 ## The Following Equipment is Required
- 
-- `MSI Z390-A PRO`
-- `Intel i5-9600K`
+ `MSI Z390-A PRO`
+
+ `Intel i5-9600K`
  
 ## Pre-Install Steps
 ### Resize The EFI/System Partition to 1GB
-- For this I use **[MiniTool Partition Wizard](https://www.partitionwizard.com/free-partition-manager.html)**.
-- Shrink the OS Part by `884MB`
+- For use **[MiniTool Partition Wizard](https://www.partitionwizard.com/free-partition-manager.html)**
+- Shrink the **OS** Partition by `884MB`
 - Delete the **MSR** Partition.
-- Extend the EFI Partition to `1GB`
-- Apply and reboot.
+- Extend the **EFI** Partition to `1GB`
+- Apply and Reboot
  
 ### Download macOS Recovery Files
-- Follow along in this [guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html#downloading-macos) until you reach **Making The Installer**.
-- Once you have the `BaseSystem.chunklist` & `BaseSystem.dmg` files create a folder called `com.apple.recovery.boot` and move them into it.
-- Drag the new folder to your `C:` drive.
+- Follow along **[here](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html#downloading-macos)** until you reach **Making The Installer**.
+- Once the downloads are finished create a folder named `com.apple.recovery.boot` and move `BaseSystem.chunklist` & `BaseSystem.dmg` into it.
+- Drag the `com.apple.recovery.boot` folder to your `C:` drive.
  
-### Download Repo and Generate Unique Serials
+### Download Repo
 - Download my repo from GitHub or click **[here](https://github.com/ZeroOneZero/ZmaCorK/archive/refs/heads/main.zip)**
 - Open the zip and extract just the `EFI` folder to your `C:` drive.
+
+### Generate Unique Serials
 - Download the config.plist editor from **[here](https://github.com/corpnewt/ProperTree)**
 - Extract the zip and run the .bat file.
-- Open->C:\EFI\OC\config.plist
-- Then follow just the **PlatformInfo** steps **[here](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html#platforminfo)** to generate your own unique Board Serial, MLB & UUID.
+- In ProperTree, Open->C:\EFI\OC\config.plist
+- Follow the **PlatformInfo** steps **[here](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html#platforminfo)** to generate your own unique Board Serial, MLB & UUID.
  
 *Note: Using this repo without generating your own serials will not work as I have blanked them out in the config.plist*
- 
-- After replacing the four blanks in the plist, save and continue below.
-- Open an Admin Command Prompt and run:
- 
-- `mountvol X: /S`
-- `xcopy C:\EFI X:\EFI /E /H /C /I /Y`
-- `xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /E /H /C /I /Y`
- 
-*Mounts the System Partition and copies the folders we moved to C: into it.*
+- Save the file and quit ProperTree
+
+### Copy Files to EFI
+- Run a **Command Prompt** as **Administrator** and copy and paste these commmands:
+
+`mountvol X: /S`
+
+`xcopy C:\EFI X:\EFI /E /H /C /I /Y`
+
+
+`xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /E /H /C /I /Y`
+
+*This will mount the System Partition and copy the folders we moved to `C:` into it.*
  
 ### Add Boot Entry for OpenCore
 - Download **[BOOTICEx64](https://m.majorgeeks.com/index.php?ct=files&action=download&)**
-- Extract and run the exe
-- UEFI->Edit Boot Entries
-- At the least you’ll see **Windows Boot Manager** in the list.
-- Select **Add** then type into the **File Name** box at the bottom of the window that opened.
-`X:\EFI\OC\OpenCore.efi`
+- Extract and run the portable .exe
+- In BootICE, **UEFI->Edit Boot Entries**
+- You will see **Windows Boot Manager** and possibly others in the list.
+- Select **Add**, then paste `X:\EFI\OC\OpenCore.efi` into the **File Name** box
 - Click **Okay** and you should see **Successfully added boot entry**.
-- In **Menu Title** type `OpenCore`.
+- Name this Boot Entry in the **Menu Title** field `OpenCore`
 - Click on **Save current boot entry**
 - Last, **Close->Exit** and reboot to enter the BIOS settings below.
  
@@ -77,4 +82,4 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - Select OpenCore
 *May be listed as **UEFI OS***
 - Select recovery.dmg to start macOS install.
-- Refer [here](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html#booting-the-opencore-usb) for any troubleshooting.
+- Refer **[here](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html#booting-the-opencore-usb)** for any troubleshooting.
