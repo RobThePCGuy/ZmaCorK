@@ -9,11 +9,11 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - `Intel i5-9600K`
  
 ## Pre-Install Steps
-### Resize The EFI/System Partition to 500MB
+### Resize The EFI/System Partition to 1GB
 - For this I use **[MiniTool Partition Wizard](https://www.partitionwizard.com/free-partition-manager.html)**.
-- Shrink the OS Part by `384MB`.
+- Shrink the OS Part by `884MB`
 - Delete the **MSR** Partition.
-- Extend the EFI Partition to `500MB` .
+- Extend the EFI Partition to `1GB` 
 - Apply and reboot.
 
 ### Download macOS Recovery Files
@@ -29,6 +29,7 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 `cmd /c if not exist X: (mountvol X: /S) & xcopy C:\EFI X:\EFI /C /I & xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /C /I`
 
 *This command mounts the EFI Partition to X: then copies the EFI and recovery folders you moved to C: to the EFI Partition*
+
 ### Add Boot Entry for OpenCore
 - Download **[BOOTICEx64](https://m.majorgeeks.com/index.php?ct=files&action=download&)**
 - Extract and run the exe
