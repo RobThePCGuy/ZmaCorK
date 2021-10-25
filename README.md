@@ -27,10 +27,10 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - Open an Admin Command Prompt and run:
 
 - `mountvol X: /S`
-- `xcopy C:\EFI X:\EFI /E /H /C /I`
-- `xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /E /H /C /I`
+- `xcopy C:\EFI X:\EFI /E /H /C /I /Y`
+- `xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /E /H /C /I /Y`
 
-*This command mounts the EFI Partition to X: then copies the EFI and recovery folders you moved to C: to the EFI Partition*
+*Mounts the System Partition and copies the folders we moved to C: into it.*
 
 ### Add Boot Entry for OpenCore
 - Download **[BOOTICEx64](https://m.majorgeeks.com/index.php?ct=files&action=download&)**
@@ -38,7 +38,7 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - UEFI->Edit Eoot Entries
 - At the least you'll see **Windows Boot Manager** in the list.
 - Selct **Add** then type into the **File Name** box at the bottom of the window that opened.
-`X:\EFI\BOOT\BOOTx64.efi`
+`X:\EFI\OC\OpenCore.efi`
 - Click **Okay** and you should see **Sucessfully added boot entry**.
 - In **Menu Title** type `OpenCore`.
 - Click the box for **Boot this entry next time**.
