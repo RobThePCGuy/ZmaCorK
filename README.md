@@ -51,7 +51,7 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - Extract and run the portable .exe
 - In BootICE, **UEFI->Edit Boot Entries**
 - You will see **Windows Boot Manager** and possibly others in the list.
-- Select **Add**, then paste `X:\EFI\OC\OpenCore.efi` into the **File Name** box
+- Select **Add**, then paste `X:\EFI\BOOT\BOOTx64.efi` into the **File Name** box
 - Click **Okay** and you should see **Successfully added boot entry**.
 - Name this Boot Entry in the **Menu Title** field `OpenCore`
 - Click on **Save current boot entry**
