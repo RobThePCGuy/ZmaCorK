@@ -29,9 +29,9 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - Open->C:\EFI\OC\config.plist
 - Then follow just the **PlatformInfo** steps **[here](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html#platforminfo)** to generate your own unique Board Serial, MLB & UUID.
  
-*Note: Using this repo without generating your own serials will not work as I have commented them out in the config.plist*
+*Note: Using this repo without generating your own serials will not work as I have blanked them out in the config.plist*
  
-- After replacing the four `#` in the plist, save and continue below.
+- After replacing the four blanks in the plist, save and continue below.
 - Open an Admin Command Prompt and run:
  
 - `mountvol X: /S`
