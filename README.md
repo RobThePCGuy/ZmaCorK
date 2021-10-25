@@ -26,9 +26,9 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - Open the zip and extract just the `EFI` folder to your `C:` drive.
 - Open an Admin Command Prompt and run:
 
-`mountvol X: /S`
-`xcopy C:\EFI X:\EFI /E /H /C /I`
-`xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /E /H /C /I`
+- `mountvol X: /S`
+- `xcopy C:\EFI X:\EFI /E /H /C /I`
+- `xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /E /H /C /I`
 
 *This command mounts the EFI Partition to X: then copies the EFI and recovery folders you moved to C: to the EFI Partition*
 
