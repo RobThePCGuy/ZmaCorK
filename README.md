@@ -10,10 +10,15 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
  
 ## Pre-Install Steps
 ### Resize The EFI/System Partition to 1GB
-- For use **[MiniTool Partition Wizard](https://www.partitionwizard.com/free-partition-manager.html)**
-- Shrink the **OS** Partition by `884MB`
-- Delete the **MSR** Partition.
+- I use **[MiniTool Partition Wizard](https://www.partitionwizard.com/free-partition-manager.html)** because it's simple and free.
+
+*Note: The **MSR** Partition is `16MB`. It sits between our EFI and Windows Partitions. We cannot move unallocated space two partitions over.*
+
+- Delete the **MSR** Partition
+- Shrink the **Windows** Partition by `808MB`
 - Extend the **EFI** Partition to `1GB`
+
+*Note: 200MB original EFI size + 16MB MSR + 808MB from Windows = 1024MB*
 - Apply and Reboot
  
 ### Download macOS Recovery Files
@@ -28,10 +33,13 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 ### Generate Unique Serials
 - Download the config.plist editor from **[here](https://github.com/corpnewt/ProperTree)**
 - Extract the zip and run the .bat file.
-- In ProperTree, **Open->C:\EFI\OC\config.plist**
+- In ProperTree, **Open->`C:\EFI\OC\config.plist`**
 - Follow the **PlatformInfo** steps **[here](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html#platforminfo)** to generate your own unique Board Serial, MLB & UUID.
+ - Find the **MAC Address** of your Ethernet card using this command: `ipconfig /all`
+ - Enter the **MAC** without special charcters into the **Apple ROM** field.
  
-*Note: Using this repo without generating your own serials will not work as I have blanked them out in the config.plist*
+*Note: You must complete those last 3 steps. I blanked out the corresponding 4 fields in the config.plist*
+
 - Save the file and quit ProperTree
 
 ### Copy Files to EFI
@@ -44,7 +52,7 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 
 `xcopy C:\com.apple.recovery.boot X:\com.apple.recovery.boot /E /H /C /I /Y`
 
-*This will mount the System Partition and copy the folders we moved to `C:` into it.*
+*Note: This will mount the System Partition and copy the folders we moved to `C:` into it.*
  
 ### Add Boot Entry for OpenCore
 - Download **[BOOTICEx64](https://m.majorgeeks.com/index.php?ct=files&action=download&)**
@@ -60,7 +68,8 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 ## Setting Up The BIOS
  
 ### MSI Z390-A PRO / BIOS Revision: 7B98v1D
-*During boot repeatedly taping the **Delete** key on the keyboard will open the BIOS*
+
+*Note: During boot repeatedly taping the **Delete** key on the keyboard will open the BIOS*
  
 - `Factory Default Settings by Pressing F6`
 - `Enter Advanced Mode by Pressing F7`
@@ -80,6 +89,8 @@ Z390-A PRO + macOS + OpenCore + i5-9600K = ZmaCorK
 - I use a DP->HDMI cable that plugs into a ARC port on the TV so it pulls in the audio as well.
 - Boot your PC pressing F11 until you see the Boot options screen
 - Select OpenCore
-*May be listed as **UEFI OS***
+
+*Note: May be listed as **UEFI OS***
+
 - Select recovery.dmg to start macOS install.
 - Refer **[here](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html#booting-the-opencore-usb)** for any troubleshooting.
